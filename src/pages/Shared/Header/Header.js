@@ -15,11 +15,13 @@ const Header = () => {
   };
   const menuItems = (
     <>
-      <li>
-        <Link to="/">Home</Link>
+      <li className="">
+        <Link className="normal-case" to="/">
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/appointment">Appointment</Link>
+        <Link to="/blog">Blog</Link>
       </li>
 
       {user?.uid ? (
@@ -74,7 +76,7 @@ const Header = () => {
             {menuItems}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Doctor Portal</a>
+        <a className="btn btn-ghost normal-case text-xl">Blackery Laptop</a>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
