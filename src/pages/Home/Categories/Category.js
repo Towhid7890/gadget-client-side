@@ -6,7 +6,7 @@ const Category = ({ category }) => {
   return (
     <div>
       <div className="card  bg-black shadow-xl">
-        <figure className="px-5 pt-5">
+        <figure className="px-3 pt-2">
           <img
             src={category.picture}
             alt="Shoes"
