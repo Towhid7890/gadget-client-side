@@ -46,6 +46,12 @@ const CategoryModal = ({ selectCategories, setSelectCategories }) => {
       <input type="checkbox" id="my-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
+          <label
+            htmlFor="my-modal"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
+          >
+            ✕
+          </label>
           <h3 className="font-bold text-lg">{name}</h3>
           <form onSubmit={handleBooking}>
             <input

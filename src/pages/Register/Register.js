@@ -22,9 +22,10 @@ const Register = () => {
 
   const handleRegister = (data) => {
     // create register section
-    createUser(data.email, data.password)
+    createUser(data.email, data.password, data.role)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(user);
         updateUserProfile({
           displayName: data.name,
         })
@@ -33,11 +34,29 @@ const Register = () => {
             setError(error.message);
           });
         toast.success("User Created Successfully");
-        navigate("/");
+        saveUser(data.name, data.email, data.role);
       })
       .catch((error) => {
         const errorMessage = error.message;
         setError(errorMessage);
+      });
+  };
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (loading) {
+          return <Loader></Loader>;
+        }
+        navigate("/");
       });
   };
   return (
@@ -134,6 +153,21 @@ const Register = () => {
                 </span>
               )}
             </label>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text  text-base">
+                  Select account Type
+                </span>
+              </label>
+              <select
+                {...register("role")}
+                name="role"
+                className="select w-full input-bordered"
+              >
+                <option selected>Admin</option>
+                <option>Seller</option>
+              </select>
+            </div>
             <label className="label">
               <span className="label-text text-red-500 text-base">{error}</span>
             </label>
