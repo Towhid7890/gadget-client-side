@@ -12,10 +12,10 @@ const Categories = () => {
   ];
   return (
     <div>
-      <h2 className="text-4xl text-center py-5 font-bold">
+      <h2 className="text-4xl text-center py-16 font-bold">
         Show all of Our <br /> Categories
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10 px-6">
         {categories.map((category) => (
           <Category category={category} key={category.id}></Category>
         ))}

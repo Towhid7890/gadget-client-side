@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Category = ({ category }) => {
   return (
     <div>
-      <div className="card  bg-black shadow-xl">
+      <div className="card  bg-sky-200 shadow-xl">
         <figure className="px-3 pt-2">
           <img
             src={category.picture}
