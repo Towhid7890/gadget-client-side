@@ -9,21 +9,25 @@ const CategoryCard = ({ category }) => {
     seller,
     location,
     registered,
+    uses,
   } = category;
   return (
-    <div className="card border bg-base-100 shadow-xl">
-      <figure>
+    <div className="card border border-lime-900 bg-base-100 shadow-xl">
+      <figure className="border">
         <img className="w-full h-80" src={picture} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">
-          {name}
-          <div className="badge badge-secondary">NEW</div>
-        </h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div className="card-actions justify-end">
-          <div className="badge badge-outline">Fashion</div>
-          <div className="badge badge-outline">Products</div>
+        <h2 className="card-title">{name}</h2>
+        <p>Seller: {seller.name}</p>
+        <p>Location: {location}</p>
+        <p>Original Price: {orginialPrice} $</p>
+        <p>Resale Price: {resalePrice} $</p>
+        <p>Uses: {uses}</p>
+        <p>Posted In: {registered}</p>
+        <div className="card-actions w-full">
+          <button className="btn btn-secondary w-full text-xl text-white">
+            Book Now
+          </button>
         </div>
       </div>
     </div>

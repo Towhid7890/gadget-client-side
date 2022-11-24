@@ -19,7 +19,7 @@ const Category = ({ category }) => {
               to={`/category/${category.id}`}
               className="btn btn-secondary text-white text-2xl w-full"
             >
-              <FaLaptop></FaLaptop>
+              <FaLaptop className="mr-2"></FaLaptop>
               {category.name}
             </Link>
           </div>
