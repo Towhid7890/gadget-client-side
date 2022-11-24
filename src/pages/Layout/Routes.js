@@ -4,6 +4,7 @@ import Main from "./Main";
 import Login from "./../Login/Login";
 import Register from "./../Register/Register";
 import SingleCategories from "../Home/Categories/SingleCategories";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ export const router = createBrowserRouter([
         loader: async ({ params }) => {
           return fetch(`http://localhost:5000/category/${params.userId}`);
         },
-        element: <SingleCategories />,
+        element: (
+          <PrivateRoute>
+            <SingleCategories />
+          </PrivateRoute>
+        ),
       },
     ],
   },

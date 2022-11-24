@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../../Loading/Loader";
 import CategoryCard from "./CategoryCard";
+import CategoryModal from "./CategoryModal";
 
 const SingleCategories = () => {
+  const [selectCategories, setSelectCategories] = useState(null);
   let { userId } = useParams();
   const { data: categories = [] } = useQuery({
     queryKey: ["categories", userId],
@@ -23,10 +25,19 @@ const SingleCategories = () => {
         <>
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-3">
             {categories.map((category) => (
-              <CategoryCard category={category}></CategoryCard>
+              <CategoryCard
+                setSelectCategories={setSelectCategories}
+                category={category}
+              ></CategoryCard>
             ))}
           </div>
         </>
+      )}
+      {selectCategories && (
+        <CategoryModal
+          selectCategories={selectCategories}
+          setSelectCategories={setSelectCategories}
+        ></CategoryModal>
       )}
     </div>
   );

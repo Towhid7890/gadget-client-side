@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoryCard = ({ category }) => {
+const CategoryCard = ({ category, setSelectCategories }) => {
   const {
     name,
     picture,
@@ -11,6 +11,7 @@ const CategoryCard = ({ category }) => {
     registered,
     uses,
   } = category;
+
   return (
     <div className="card border border-lime-900 bg-base-100 shadow-xl">
       <figure className="border">
@@ -25,9 +26,13 @@ const CategoryCard = ({ category }) => {
         <p>Uses: {uses}</p>
         <p>Posted In: {registered}</p>
         <div className="card-actions w-full">
-          <button className="btn btn-secondary w-full text-xl text-white">
+          <label
+            htmlFor="my-modal"
+            onClick={() => setSelectCategories(category)}
+            className="btn btn-secondary w-full text-xl text-white"
+          >
             Book Now
-          </button>
+          </label>
         </div>
       </div>
     </div>
