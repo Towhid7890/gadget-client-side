@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { MyContext } from "../../../context/AuthContext";
+import useAdmin from "../../../hooks/useAdmin";
 import Header from "../../Shared/Header/Header";
 
 const DashboardLayout = () => {
+  const { user } = useContext(MyContext);
+  const [role, setRole] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/users?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setRole(data));
+  }, [user?.email]);
+
+  const [isAdmin] = useAdmin(user?.email);
   return (
     <div>
       <Header></Header>
@@ -14,15 +25,35 @@ const DashboardLayout = () => {
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-            <li>
-              <Link to="dashboard/myOrders">My Orders</Link>
-            </li>
-            <li>
-              <a>Add A Product</a>
-            </li>
-            <li>
-              <a>All Sellers</a>
-            </li>
+            {!isAdmin &&
+              role?.map((r) =>
+                r.role === "seller" ? (
+                  <>
+                    <li>
+                      <Link to="/dashboard/addProduct">Add A product</Link>
+                    </li>
+                    <li>
+                      <Link to="/addProduct">My product</Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link to="/dashboard">My Orders</Link>
+                    </li>
+                  </>
+                )
+              )}
+            {isAdmin && (
+              <>
+                <li>
+                  <a>All Buyer</a>
+                </li>
+                <li>
+                  <a>All Sellers</a>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

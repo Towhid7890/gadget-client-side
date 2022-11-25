@@ -7,6 +7,9 @@ import SingleCategories from "../Home/Categories/SingleCategories";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../Dashboard/DashboardLayout/DashboardLayout";
 import MyOrder from "../Dashboard/MyOrders/MyOrder";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import AddProduct from "../AddProduct/AddProduct";
+import Dashboard from "../Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -44,11 +47,19 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard",
-        element: <MyOrder></MyOrder>,
+        element: <Dashboard></Dashboard>,
+      },
+      {
+        path: "/dashboard/addProduct",
+        element: <AddProduct></AddProduct>,
       },
     ],
   },
