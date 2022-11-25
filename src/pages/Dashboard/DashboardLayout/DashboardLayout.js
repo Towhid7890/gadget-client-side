@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Header from "../../Shared/Header/Header";
 
 const DashboardLayout = () => {
@@ -15,7 +15,7 @@ const DashboardLayout = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             <li>
-              <a>My Orders</a>
+              <Link to="dashboard/myOrders">My Orders</Link>
             </li>
             <li>
               <a>Add A Product</a>

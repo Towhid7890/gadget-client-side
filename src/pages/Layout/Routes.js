@@ -6,6 +6,7 @@ import Register from "./../Register/Register";
 import SingleCategories from "../Home/Categories/SingleCategories";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../Dashboard/DashboardLayout/DashboardLayout";
+import MyOrder from "../Dashboard/MyOrders/MyOrder";
 
 export const router = createBrowserRouter([
   {
@@ -44,5 +45,11 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "dashboard/myOrders",
+        element: <MyOrder></MyOrder>,
+      },
+    ],
   },
 ]);
