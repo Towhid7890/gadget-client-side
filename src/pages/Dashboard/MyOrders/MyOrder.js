@@ -15,9 +15,11 @@ const MyOrder = () => {
   });
   return (
     <div className="overflow-x-auto">
+      <h2 className="text-4xl font-bold py-5">My Orders</h2>
       <table className="table w-full">
         <thead>
           <tr>
+            <th></th>
             <th></th>
             <th>Product Name</th>
             <th>Resale Price</th>
@@ -29,6 +31,18 @@ const MyOrder = () => {
           {myOrders.map((myOrder, i) => (
             <tr key={i}>
               <th>{i + 1}</th>
+              <td>
+                <div className="flex items-center space-x-3">
+                  <div className="avatar">
+                    <div className="mask mask-squircle w-12 h-12">
+                      <img
+                        src={myOrder.picture}
+                        alt="Avatar Tailwind CSS Component"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </td>
               <td>{myOrder.productName}</td>
               <td>{myOrder.resalePrice} $</td>
               <td>{myOrder.orginialPrice}</td>

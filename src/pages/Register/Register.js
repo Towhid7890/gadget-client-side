@@ -164,9 +164,9 @@ const Register = () => {
                 name="role"
                 className="select w-full input-bordered"
               >
-                <option selected>User</option>
-                <option>Admin</option>
-                <option>Seller</option>
+                <option selected>user</option>
+                <option>admin</option>
+                <option>seller</option>
               </select>
             </div>
             <label className="label">

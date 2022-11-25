@@ -4,7 +4,8 @@ import { MyContext } from "../../../context/AuthContext";
 
 const CategoryModal = ({ selectCategories, setSelectCategories }) => {
   const { user } = useContext(MyContext);
-  const { name, orginialPrice, resalePrice } = selectCategories;
+  const { name, orginialPrice, resalePrice, picture } = selectCategories;
+  console.log(selectCategories);
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -19,6 +20,7 @@ const CategoryModal = ({ selectCategories, setSelectCategories }) => {
     const booking = {
       userName: user?.displayName,
       productName: item,
+      picture,
       email,
       phone,
       orginialPrice,
@@ -76,6 +78,14 @@ const CategoryModal = ({ selectCategories, setSelectCategories }) => {
               type="text"
               disabled
               value={name}
+              placeholder="Your Email"
+              className="input input-bordered w-full  mt-2"
+            />
+            <input
+              name="picture"
+              type="text"
+              disabled
+              value={picture}
               placeholder="Your Email"
               className="input input-bordered w-full  mt-2"
             />
