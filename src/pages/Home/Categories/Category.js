@@ -16,7 +16,7 @@ const Category = ({ category }) => {
         <div className="card-body items-center text-center">
           <div className="card-actions w-full">
             <Link
-              to={`/category/${category.id}`}
+              to={`/category/${category.name}`}
               className="btn btn-secondary text-white text-2xl w-full"
             >
               <FaLaptop className="mr-2"></FaLaptop>

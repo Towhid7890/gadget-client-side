@@ -11,9 +11,9 @@ const SingleCategories = () => {
   const { data: categories = [] } = useQuery({
     queryKey: ["categories", userId],
     queryFn: () =>
-      fetch(`http://localhost:5000/category/${userId}`).then((res) =>
-        res.json()
-      ),
+      fetch(
+        `http://localhost:5000/category?category=${userId.toLowerCase()}`
+      ).then((res) => res.json()),
   });
   return (
     <div className="mt-10">

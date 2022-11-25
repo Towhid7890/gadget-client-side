@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../context/AuthContext";
+import AddProduct from "../AddProduct/AddProduct";
 import useAdmin from "./../../hooks/useAdmin";
 import MyOrder from "./MyOrders/MyOrder";
 
@@ -23,7 +24,7 @@ const Dashboard = () => {
         <>
           {role.map((r) =>
             r.role === "seller" ? (
-              <>This is seller</>
+              <AddProduct></AddProduct>
             ) : (
               <>
                 <MyOrder></MyOrder>

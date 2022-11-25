@@ -10,6 +10,7 @@ import MyOrder from "../Dashboard/MyOrders/MyOrder";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import AddProduct from "../AddProduct/AddProduct";
 import Dashboard from "../Dashboard/Dashboard";
+import MyProduct from "../Dashboard/MyProduct/MyProduct";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/addProduct",
         element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/dashboard/myProduct",
+        element: <MyProduct></MyProduct>,
       },
     ],
   },
