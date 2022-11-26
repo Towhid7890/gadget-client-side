@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../context/AuthContext";
 import AddProduct from "../AddProduct/AddProduct";
 import useAdmin from "./../../hooks/useAdmin";
+import AllBuyer from "./AllBuyer/AllBuyer";
 import MyOrder from "./MyOrders/MyOrder";
 
 const Dashboard = () => {
@@ -18,7 +19,7 @@ const Dashboard = () => {
     <div>
       {isAdmin ? (
         <>
-          <p>This is admin</p>
+          <AllBuyer></AllBuyer>
         </>
       ) : (
         <>
