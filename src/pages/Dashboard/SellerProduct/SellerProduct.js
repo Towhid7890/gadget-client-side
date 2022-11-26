@@ -17,6 +17,28 @@ const SellerProduct = ({ product, refetch }) => {
         }
       });
   };
+  const handleAdvertise = (pd) => {
+    const advertiseProduct = {
+      picture: pd.picture,
+      name: pd.name,
+      category: pd.category,
+      resalePrice: pd.resalePrice,
+      seller: pd.seller.name,
+    };
+    fetch("https://assignment-12-server-orcin.vercel.app/advertise", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(advertiseProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Advertise Confirmed Successfully");
+        } else {
+          toast.error(data.message);
+        }
+      });
+  };
   return (
     <div className="card border card-side bg-base-100 shadow-xl">
       <figure className="w-1/2">
@@ -33,7 +55,12 @@ const SellerProduct = ({ product, refetch }) => {
           >
             Delete
           </button>
-          <button className="btn btn-accent btn-sm">Advertise</button>
+          <button
+            onClick={() => handleAdvertise(product)}
+            className="btn btn-accent btn-sm"
+          >
+            Advertise
+          </button>
         </div>
       </div>
     </div>

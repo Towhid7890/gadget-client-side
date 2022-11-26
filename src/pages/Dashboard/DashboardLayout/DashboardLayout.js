@@ -29,19 +29,23 @@ const DashboardLayout = () => {
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             {!isAdmin &&
               role?.map((r) =>
-                r.role === "user" && r.role === "" ? (
+                r.role === "seller" ? (
                   <>
-                    <li>
-                      <Link to="/dashboard">My Orders</Link>
-                    </li>
-                  </>
-                ) : (
-                  <>
+                    <h2 className="font-bold text-purple-600 text-xl">
+                      Seller Dashboard
+                    </h2>
                     <li>
                       <Link to="/dashboard/addProduct">Add A product</Link>
                     </li>
                     <li>
                       <Link to="/dashboard/myProduct">My product</Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <h2 className="font-bold text-info">Buyer Dashboard</h2>
+                    <li>
+                      <Link to="/dashboard">My Orders</Link>
                     </li>
                   </>
                 )

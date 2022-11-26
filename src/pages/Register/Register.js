@@ -5,9 +5,12 @@ import { MyContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 import Loader from "../Loading/Loader";
 import { useForm } from "react-hook-form";
+import useToken from "../../hooks/useToken";
 
 const Register = () => {
   const { createUser, updateUserProfile, loading } = useContext(MyContext);
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
   const {
     register,
     formState: { errors },
@@ -18,6 +21,9 @@ const Register = () => {
 
   if (loading) {
     return <Loader></Loader>;
+  }
+  if (token) {
+    navigate("/");
   }
 
   const handleRegister = (data) => {
@@ -56,7 +62,7 @@ const Register = () => {
         if (loading) {
           return <Loader></Loader>;
         }
-        navigate("/");
+        setCreatedUserEmail(email);
       });
   };
   return (
