@@ -12,11 +12,14 @@ import Dashboard from "../Dashboard/Dashboard";
 import MyProduct from "../Dashboard/MyProduct/MyProduct";
 import AllBuyer from "../Dashboard/AllBuyer/AllBuyer";
 import AllSeller from "../Dashboard/AllSeller/AllSeller";
+import Blog from "./../Home/Blog/Blog";
+import Notfound from "../Notfound/Notfound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <Notfound></Notfound>,
     children: [
       {
         path: "/",
@@ -25,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/login",

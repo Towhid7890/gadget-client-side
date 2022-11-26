@@ -7,18 +7,14 @@ const Advertise = () => {
   const { data: myProducts = [] } = useQuery({
     queryKey: ["myProducts"],
     queryFn: async () => {
-      const res = await fetch(url, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const res = await fetch(url);
       const data = await res.json();
       return data;
     },
   });
   return (
     <div>
-      {myProducts.length > 0 ? (
+      {myProducts && myProducts.length > 0 ? (
         <h2 className="text-3xl font-bold text-purple-700 text-center py-4">
           All Advertisement Product{" "}
         </h2>
