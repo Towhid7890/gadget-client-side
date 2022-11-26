@@ -4,7 +4,7 @@ import { MyContext } from "../../../context/AuthContext";
 
 const MyOrder = () => {
   const { user } = useContext(MyContext);
-  const url = `http://localhost:5000/myorders?email=${user?.email}`;
+  const url = `https://assignment-12-server-orcin.vercel.app/myorders?email=${user?.email}`;
   const { data: myOrders = [] } = useQuery({
     queryKey: ["myOrders", user?.email],
     queryFn: async () => {

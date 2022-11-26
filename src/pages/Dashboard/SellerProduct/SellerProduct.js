@@ -3,9 +3,12 @@ import toast from "react-hot-toast";
 
 const SellerProduct = ({ product, refetch }) => {
   const handleDeleteProduct = (id) => {
-    fetch(`http://localhost:5000/product/${product._id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-12-server-orcin.vercel.app/product/${product._id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
@@ -20,17 +23,17 @@ const SellerProduct = ({ product, refetch }) => {
         <img src={product.picture} alt="Movie" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{product.name}</h2>
+        <h2 className="text-lg md:text-2xl">{product.name}</h2>
         <p>Resale Price: {product.resalePrice} $</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">UnSold</button>
+        <div className="card-actions">
+          <button className="btn btn-primary btn-sm">UnSold</button>
           <button
-            className="btn btn-primary"
+            className="btn btn-primary btn-sm"
             onClick={() => handleDeleteProduct(product._id)}
           >
             Delete
           </button>
-          <button className="btn btn-primary">Advertise</button>
+          <button className="btn btn-accent btn-sm">Advertise</button>
         </div>
       </div>
     </div>

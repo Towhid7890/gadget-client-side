@@ -7,6 +7,7 @@ import "./SocialLogin.css";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MyContext } from "../../context/AuthContext";
+import Loader from "../Loading/Loader";
 
 const SocialLogin = () => {
   const [loading, setLoading] = useState("");
@@ -34,7 +35,8 @@ const SocialLogin = () => {
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
-        // const user = result.user;
+        const user = result.user;
+        saveUser(user?.displayName, user?.email, "user");
         if (loading) {
           return <button className="btn btn-square loading"></button>;
         }
@@ -43,6 +45,24 @@ const SocialLogin = () => {
       .catch((error) => {
         const errorMessage = error.message;
         setError(errorMessage);
+      });
+  };
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("https://assignment-12-server-orcin.vercel.app/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (loading) {
+          return <Loader></Loader>;
+        }
+        navigate("/");
       });
   };
   return (

@@ -5,7 +5,7 @@ import { MyContext } from "../../../context/AuthContext";
 
 const AllSeller = () => {
   const { user } = useContext(MyContext);
-  const url = `http://localhost:5000/buyers?role=seller`;
+  const url = `https://assignment-12-server-orcin.vercel.app/buyers?role=seller`;
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users", user?.email],
     queryFn: async () => {
@@ -16,7 +16,7 @@ const AllSeller = () => {
   });
   const handleDeleteUser = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/user/${id}`, {
+    fetch(`https://assignment-12-server-orcin.vercel.app/user/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

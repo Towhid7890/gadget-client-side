@@ -31,7 +31,7 @@ const AddProduct = () => {
       uses,
       registered,
     };
-    fetch("http://localhost:5000/addProduct", {
+    fetch("https://assignment-12-server-orcin.vercel.app/addProduct", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(product),
@@ -96,13 +96,11 @@ const AddProduct = () => {
             />
           </div>
           <div className="form-control mt-3">
-            <input
-              type="text"
-              name="category"
-              required
-              placeholder="category"
-              className="input input-bordered"
-            />
+            <select name="category" className="select select-bordered w-full ">
+              <option selected>dell</option>
+              <option>hp</option>
+              <option>lenovo</option>
+            </select>
           </div>
           <div className="form-control mt-3">
             <input

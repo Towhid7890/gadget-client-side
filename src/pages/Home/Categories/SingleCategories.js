@@ -12,7 +12,7 @@ const SingleCategories = () => {
     queryKey: ["categories", userId],
     queryFn: () =>
       fetch(
-        `http://localhost:5000/category?category=${userId.toLowerCase()}`
+        `https://assignment-12-server-orcin.vercel.app/category?category=${userId.toLowerCase()}`
       ).then((res) => res.json()),
   });
   return (

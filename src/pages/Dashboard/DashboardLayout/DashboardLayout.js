@@ -8,7 +8,9 @@ const DashboardLayout = () => {
   const { user } = useContext(MyContext);
   const [role, setRole] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/users?email=${user?.email}`)
+    fetch(
+      `https://assignment-12-server-orcin.vercel.app/users?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setRole(data));
   }, [user?.email]);
@@ -27,19 +29,19 @@ const DashboardLayout = () => {
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             {!isAdmin &&
               role?.map((r) =>
-                r.role === "seller" ? (
+                r.role === "user" && r.role === "" ? (
+                  <>
+                    <li>
+                      <Link to="/dashboard">My Orders</Link>
+                    </li>
+                  </>
+                ) : (
                   <>
                     <li>
                       <Link to="/dashboard/addProduct">Add A product</Link>
                     </li>
                     <li>
                       <Link to="/dashboard/myProduct">My product</Link>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      <Link to="/dashboard">My Orders</Link>
                     </li>
                   </>
                 )

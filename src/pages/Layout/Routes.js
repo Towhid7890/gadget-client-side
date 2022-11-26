@@ -6,7 +6,6 @@ import Register from "./../Register/Register";
 import SingleCategories from "../Home/Categories/SingleCategories";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../Dashboard/DashboardLayout/DashboardLayout";
-import MyOrder from "../Dashboard/MyOrders/MyOrder";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import AddProduct from "../AddProduct/AddProduct";
 import Dashboard from "../Dashboard/Dashboard";
@@ -38,7 +37,9 @@ export const router = createBrowserRouter([
       {
         path: "/category/:userId",
         loader: async ({ params }) => {
-          return fetch(`http://localhost:5000/category/${params.userId}`);
+          return fetch(
+            `https://assignment-12-server-orcin.vercel.app/category/${params.userId}`
+          );
         },
         element: (
           <PrivateRoute>
@@ -70,11 +71,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/allBuyer",
-        element: <AllBuyer></AllBuyer>,
+        element: (
+          <AdminRoute>
+            <AllBuyer></AllBuyer>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/allSeller",
-        element: <AllSeller></AllSeller>,
+        element: (
+          <AdminRoute>
+            <AllSeller></AllSeller>
+          </AdminRoute>
+        ),
       },
     ],
   },
