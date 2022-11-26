@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { MyContext } from "../../context/AuthContext";
 
 const AddProduct = () => {
   const { user } = useContext(MyContext);
+  const navigate = useNavigate();
   const handleAddProduct = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -39,6 +41,7 @@ const AddProduct = () => {
         if (data.acknowledged) {
           form.reset();
           toast.success("Product add successfully");
+          navigate("/dashboard/myProduct");
         }
       });
   };
