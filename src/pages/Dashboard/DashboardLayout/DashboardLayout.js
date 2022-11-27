@@ -16,6 +16,7 @@ const DashboardLayout = () => {
   }, [user?.email]);
 
   const [isAdmin] = useAdmin(user?.email);
+  console.log(isAdmin);
 
   return (
     <div>
