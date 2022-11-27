@@ -16,6 +16,7 @@ const DashboardLayout = () => {
   }, [user?.email]);
 
   const [isAdmin] = useAdmin(user?.email);
+
   return (
     <div>
       <Header></Header>
@@ -50,19 +51,24 @@ const DashboardLayout = () => {
                   </>
                 )
               )}
-            {isAdmin && (
-              <>
-                <h2 className="font-bold text-purple-600 text-xl">
-                  Admin Dashboard
-                </h2>
-                <li>
-                  <Link to="/dashboard/allBuyer">All Buyer</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/allSeller">All Sellers</Link>
-                </li>
-              </>
-            )}
+            {isAdmin ||
+              role.map((r) =>
+                r.role === "admin" ? (
+                  <>
+                    <h2 className="font-bold text-purple-600 text-xl">
+                      Admin Dashboard
+                    </h2>
+                    <li>
+                      <Link to="/dashboard/allBuyer">All Buyer</Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard/allSeller">All Sellers</Link>
+                    </li>
+                  </>
+                ) : (
+                  <></>
+                )
+              )}
           </ul>
         </div>
       </div>
