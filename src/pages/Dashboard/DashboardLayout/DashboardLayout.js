@@ -52,7 +52,7 @@ const DashboardLayout = () => {
                   </>
                 )
               )}
-            {isAdmin ||
+            {isAdmin &&
               role.map((r) =>
                 r.role === "admin" ? (
                   <>
