@@ -13,7 +13,7 @@ const Advertise = () => {
     },
   });
   return (
-    <div>
+    <div className="pt-10">
       {myProducts && myProducts.length > 0 ? (
         <h2 className="text-3xl font-bold text-purple-700 text-center py-4">
           All Advertisement Product{" "}

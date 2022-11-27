@@ -2,7 +2,7 @@ import React from "react";
 
 const Extra = () => {
   return (
-    <div>
+    <div className="pb-6">
       <h2 className="text-3xl text-center font-bold text-black py-16">
         Show all Of Our Review
       </h2>
