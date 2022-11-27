@@ -12,11 +12,9 @@ const AllBuyer = () => {
       const res = await fetch(url);
       const data = await res.json();
       return data;
-      console.log(users);
     },
   });
   const handleDeleteUser = (id) => {
-    console.log(id);
     fetch(`https://assignment-12-server-orcin.vercel.app/user/${id}`, {
       method: "DELETE",
     })

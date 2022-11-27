@@ -27,7 +27,7 @@ const CategoryModal = ({ selectCategories, setSelectCategories }) => {
       resalePrice,
       location,
     };
-    console.log(booking);
+
     fetch("https://assignment-12-server-orcin.vercel.app/bookings", {
       method: "POST",
       headers: { "content-type": "application/json" },

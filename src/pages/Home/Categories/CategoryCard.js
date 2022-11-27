@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 
 const CategoryCard = ({ category, setSelectCategories }) => {
   const {
@@ -11,6 +12,34 @@ const CategoryCard = ({ category, setSelectCategories }) => {
     registered,
     uses,
   } = category;
+
+  const handleReport = (category) => {
+    console.log(category);
+    const items = {
+      name,
+      picture,
+      resalePrice,
+      orginialPrice,
+      seller,
+      location,
+      registered,
+      uses,
+    };
+    fetch("https://assignment-12-server-orcin.vercel.app/report", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(items),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Reported Successfully");
+          setSelectCategories(null);
+        } else {
+          toast.error(data.message);
+        }
+      });
+  };
 
   return (
     <div className="card border border-lime-900 bg-base-100 shadow-xl">
@@ -32,6 +61,13 @@ const CategoryCard = ({ category, setSelectCategories }) => {
             className="btn btn-secondary w-full text-xl text-white"
           >
             Book Now
+          </label>
+          <label
+            htmlFor="my-modal"
+            onClick={() => handleReport(category)}
+            className="btn btn-primary w-full text-xl text-white"
+          >
+            Report Item
           </label>
         </div>
       </div>

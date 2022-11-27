@@ -14,6 +14,7 @@ import AllBuyer from "../Dashboard/AllBuyer/AllBuyer";
 import AllSeller from "../Dashboard/AllSeller/AllSeller";
 import Blog from "./../Home/Blog/Blog";
 import Notfound from "../Notfound/Notfound";
+import Report from "../Dashboard/Report/Report";
 
 export const router = createBrowserRouter([
   {
@@ -89,6 +90,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllSeller></AllSeller>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/report",
+        element: (
+          <AdminRoute>
+            <Report></Report>
           </AdminRoute>
         ),
       },
