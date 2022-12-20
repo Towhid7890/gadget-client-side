@@ -6,7 +6,7 @@ const Stack = () => {
       <h2 className="text-3xl font-bold text-center">
         Recent Record of Our Shop
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 p-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8 p-12">
         <div className="stat border h-56">
           <div className="stat-figure text-primary">
             <svg
