@@ -15,6 +15,8 @@ import AllSeller from "../Dashboard/AllSeller/AllSeller";
 import Blog from "./../Home/Blog/Blog";
 import Notfound from "../Notfound/Notfound";
 import Report from "../Dashboard/Report/Report";
+import Faq from "../Home/Faq/Faq";
+import Contact from "../Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ export const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/faq",
+        element: <Faq />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/blog",

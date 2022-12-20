@@ -23,6 +23,12 @@ const Header = () => {
       <li>
         <Link to="/blog">Blog</Link>
       </li>
+      <li>
+        <Link to="/faq">Faq</Link>
+      </li>
+      <li>
+        <Link to="/contact">Contact</Link>
+      </li>
 
       {user?.uid ? (
         <>
